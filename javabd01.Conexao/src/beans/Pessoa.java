@@ -4,13 +4,14 @@
  */
 package beans;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author laboratorio
  */
-public class Pessoa {
+    public class Pessoa implements Serializable {
     
     private int id;
     private String nome;
@@ -53,15 +54,6 @@ public class Pessoa {
         return this.id+" - "+this.nome;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + this.id;
-        hash = 11 * hash + Objects.hashCode(this.nome);
-        hash = 11 * hash + Objects.hashCode(this.sexo);
-        hash = 11 * hash + Objects.hashCode(this.idioma);
-        return hash;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -86,6 +78,4 @@ public class Pessoa {
         }
         return Objects.equals(this.idioma, other.idioma);
     }
-    
-    
-}
+  }

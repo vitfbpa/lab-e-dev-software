@@ -18,39 +18,31 @@ import java.io.ObjectInputStream;
  */
 public class JavaBD {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
         int porta = 12345;
 
-        try ( ServerSocket servidorSocket = new ServerSocket(porta)) {
+        try (ServerSocket servidorSocket = new ServerSocket(porta)){
+
             System.out.println("Servidor aguardando conexões na porta " + porta);
 
-            while (true) {
-                try {
-                    Socket clienteSocket = servidorSocket.accept();
-                    System.out.println("Conexão aceita  de " + clienteSocket.getInetAddress());
-                    // ObjectOutputStream out = new ObjectOutputStream(clienteSocket.getOutputStream());
-                    // ObjectInputStream in = new ObjectInputStream(clienteSocket.getInputStream());
+            while (true) { //Loop infinito porque quero sempre estar recebendo conexões
+                try{
 
-                    //int id = in.readInt();
-                    //System.out.println("ID recebido: " + id);
+                    Socket clienteSocket = servidorSocket.accept(); //Aceito todas as conexões e solicitações do cliente automáticamente
+                    System.out.println("Conexão aceita de " + clienteSocket.getInetAddress()); //Após aceitar, printo o IP do Cliente
 
-                    //PessoaDAO pDAO = new PessoaDAO();
-
-                    //Pessoa p = pDAO.getPessoa(id);
-                    //System.out.println(p.getNome());
-
-                    //out.writeObject(p);
-                    
-                    // Criar uma nova thread para lidar com o cliente
                     Thread threadCliente = new ThreadServer(clienteSocket);
                     threadCliente.start();
-                    
-                } catch (IOException ex) {
+
+
+
+                } catch (IOException ex){
                     System.out.println("Erro ao aceitar conexão do cliente");
                 }
             }
-        } catch (IOException ex) {
-            System.out.println("Erro ao criar  o ServerSocket");
+        }catch(IOException ex){
+            System.out.println("Erro ao criar ServerSocket");
         }
+      }
     }
-}

@@ -11,7 +11,7 @@ public class Conexao {
 
         try{
             // Instanciando o objeto Connection conn, objeto da biblioteca adicionada aos arquivos do programa e passando o URL através do getConnection.
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdaula01?Timezone=true&serverTimezone=UTC", "root", "laboratorio");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdaula01?Timezone=true&serverTimezone=UTC", "root", "viti2005");
             // "jdbc:mysql://localhost:3306/nomeBanco?Timezone=true&serverTimezone=UTC", "root", "senha"
 
             System.out.println("Conexão realizada com sucesso!");

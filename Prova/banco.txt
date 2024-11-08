@@ -1,0 +1,10 @@
+CREATE DATABASE prova;
+USE prova;
+
+CREATE TABLE clientes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  cpf VARCHAR(100) NOT NULL,
+  endereco VARCHAR(100) NOT NULL,
+  telefone VARCHAR(100) NOT NULL
+ ); 
